@@ -19,7 +19,12 @@ public class Main {
         eventFlux
                 .subscribeOn(Schedulers.fromExecutor(Executors.newCachedThreadPool()))
                 .doOnComplete(() -> System.out.println("Fin"))
-                .subscribe(event -> System.out.println(event.getCode()));
+                .subscribe(event -> {
+                    System.out.println(event.getId());
+                    System.out.println(event.getDescription());
+                    System.out.println(event.getCode());
+                    System.out.println(event.getState());
+                });
 
     }
 }
